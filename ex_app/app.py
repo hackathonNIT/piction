@@ -2,6 +2,10 @@ import streamlit as st
 from streamlit_drawable_canvas import st_canvas
 import cv2
 
+import piction
+
+
+
 st.title("Drawable Canvas")
 st.markdown("""
 Draw on the canvas, get the image data back into Python !
