@@ -2,7 +2,7 @@ import streamlit as st
 from streamlit_drawable_canvas import st_canvas
 import cv2
 
-import piction
+from piction import getPoint
 
 
 
@@ -33,4 +33,6 @@ key="canvas",
 # Do something interesting with the image data
 if canvas_result.image_data is not None:
 	st.image(canvas_result.image_data)
+	x,y=getPoint(canvas_result.image_data)
+	print(len(x))
 	
