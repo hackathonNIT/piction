@@ -97,7 +97,6 @@ def getPoint(image):
 	for i in range(len(detedge)):
 		for j in range(len(detedge[0])):
 			if detedge[i][j]>0:
-				ans=ans+1
 				p.append(int(i*len(detedge[0])+j))
 	d = {p[i]: i for i in range(len(p))}
 	d2 = {i: p[i] for i in range(len(p))}
