@@ -4,4 +4,8 @@ from .MakeFunction import(
 	plotRegression
 )
 
-__all__ = ["WriteFunc1","getSinRegression","plotRegression"]
+from .Algorithm import(
+	getPoint
+)
+
+__all__ = ["WriteFunc1","getSinRegression","plotRegression","getPoint"]
