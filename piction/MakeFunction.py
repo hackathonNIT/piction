@@ -47,17 +47,3 @@ def getSinRegression(X,Y1):
 def plotRegression():
     plt.figure("picture function")
     plt.plot(x,func1(x,*popt),label="RegressionFunction")
-<<<<<<< HEAD
-=======
-    print(x)
-    plt.xlabel("num")
-    plt.ylabel("f")
-    plt.legend()
-    #plt.savefig("/content/drive/MyDrive/hackason/results/"+fileName+".png")
-    # グリッド表示
-    plt.grid()
-
-    # グラフ表示
-    plt.show()
-
->>>>>>> origin/test
