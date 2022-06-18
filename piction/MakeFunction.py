@@ -39,7 +39,7 @@ def getSinRegression(X,Y1):
     y1=np.array(Y1)
     x=x.astype(float)
     y1=y1.astype(float)
-    print(x)
+    #print(x)
     global popt
     popt, pcov=curve_fit(func1,x, y1, p0=[1]*len(x))
 
@@ -49,7 +49,7 @@ def getSinRegression(X,Y1):
 def plotRegression():
     plt.figure("picture function")
     plt.plot(x,func1(x,*popt),label="RegressionFunction")
-    print(x)
+    #print(x)
     plt.xlabel("num")
     plt.ylabel("f")
     plt.legend()

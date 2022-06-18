@@ -94,8 +94,9 @@ def dfs(x,y):
 
 def getPoint(image):
 	img_gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY) 
+	img_gray_flip =cv2.flip(img_gray, 0)
 	global detedge
-	detedge = cv2.Canny(img_gray, 100, 1200)
+	detedge = cv2.Canny(img_gray_flip, 100, 1200)
 	p=[]
 	for i in range(len(detedge)):
 		for j in range(len(detedge[0])):
