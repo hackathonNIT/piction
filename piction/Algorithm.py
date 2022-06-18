@@ -152,7 +152,7 @@ def getPoint(image,maxPointNum=0):
 		xplus[int(point_tree_x[i])]=xplus[int(point_tree_x[i])]+0.001
 	ret_x=[]
 	ret_y=[]
-	if maxPointNum==0:
+	if maxPointNum==0 or len(point_tree_x)<=maxPointNum :
 		ret_x,ret_y=point_tree_x,point_tree_y
 	else:
 		mod = math.ceil(len(point_tree_x)/maxPointNum)
