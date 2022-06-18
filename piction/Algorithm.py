@@ -96,12 +96,7 @@ def dfs(x,y):
 	dfs(x+1, y+1)
 	dfs(x-1, y+1)
 
-
-
-
-
-def getPoint(image,maxPointNum=0):
-	initialize()
+def makeUT(image):
 	img_gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY) 
 	img_gray_flip =cv2.flip(img_gray, 0)
 	global detedge
@@ -144,6 +139,17 @@ def getPoint(image,maxPointNum=0):
 		if x+1<len(detedge[0]):
 			if detedge[y][x+1]>0:
 				ut.union(d[y*len(detedge[0])+x],d[(y)*len(detedge[0])+(x+1)])
+	
+	return ut,d2
+
+
+
+
+
+
+def getPoint(image,maxPointNum=0):
+	initialize()
+	ut,d2 = makeUT(image)
 	for i in ut.roots():
 		dfs(d2[i]%len(detedge[0]),int(d2[i]/len(detedge[0])))
 	xplus= {i:0 for i in range(len(detedge[0]))}
@@ -164,3 +170,24 @@ def getPoint(image,maxPointNum=0):
 	return ret_x,ret_y
 
 
+def getPointArray(image,maxPointNum=0):
+	ut,d2 = makeUT(image)
+	ret_x=[]
+	ret_y=[]
+	for i in ut.roots():
+		initialize()
+		dfs(d2[i]%len(detedge[0]),int(d2[i]/len(detedge[0])))
+		temp_x=[]
+		temp_y=[]
+		if maxPointNum==0 or len(point_tree_x)<=maxPointNum :
+			temp_x,temp_y=point_tree_x,point_tree_y
+		else:
+			mod = math.ceil(len(point_tree_x)/maxPointNum)
+			for i in range(len(point_tree_x)):
+				if i%mod==0:
+					temp_x.append(point_tree_x[i])
+					temp_y.append(point_tree_y[i])
+		ret_x.append(temp_x)
+		ret_y.append(temp_y)
+	return ret_x,ret_y
+		
