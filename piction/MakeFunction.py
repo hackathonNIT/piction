@@ -46,6 +46,19 @@ def getSinRegression(X,Y1):
     return x,func1(x, *popt)
     #popt, pcov=curve_fit(func2,x, y1, p0=[0]*len(x))
 
+def getSinRegressionArray(X,Y):
+    rx=np.array()
+    ry=np.array()
+    rx=rx.astype(float)
+    ry=ry.astype(float)
+    for i in range(len(X)){
+      kx,ky=getSinRegression(X[i],Y[i])
+      rx.append(kx)
+      ry.append(ky)
+    }
+
+    return rx,ry
+
 def plotRegression():
     plt.figure("picture function")
     plt.plot(x,func1(x,*popt),label="RegressionFunction")
@@ -59,4 +72,3 @@ def plotRegression():
 
     # グラフ表示
     plt.show()
-
