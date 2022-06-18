@@ -12,6 +12,16 @@ def func1(X, *params):
         Y = Y + np.array(param*(np.sin(i*i* X )))
     return Y
 
+def func2(X, *params):
+    Y = np.zeros_like(X)
+    for i, param in enumerate(params):
+        Y = Y + np.array( param*np.exp(i*X))
+    return Y
+
+def Xfunc(X,Y1):
+    X=np.array(X)
+    Y1=np.array(Y1)
+    plt.plot(X, np.poly1d(np.polyfit(X, Y1, len(X)))(X), label="多項式回帰")
 
 def WriteFunc1():
     Y = ""
@@ -32,6 +42,7 @@ def getSinRegression(X,Y1):
     print(x)
     global popt
     popt, pcov=curve_fit(func1,x, y1, p0=[1]*len(x))
+    #popt, pcov=curve_fit(func2,x, y1, p0=[0]*len(x))
 
 def plotRegression():
     plt.figure("picture function")
