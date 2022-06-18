@@ -1,12 +1,20 @@
 import cv2
 import numpy as np
 import sys
+import math
 
 sys.setrecursionlimit(100000)
 
 point_tree_y=[]
 point_tree_x=[]
 detedge=[]
+
+def initialize():
+	global point_tree_x,point_tree_y
+	point_tree_x=[]
+	point_tree_y=[]
+
+
 
 def getDetedge():
 	return detedge
@@ -92,7 +100,8 @@ def dfs(x,y):
 
 
 
-def getPoint(image):
+def getPoint(image,maxPointNum=0):
+	initialize()
 	img_gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY) 
 	img_gray_flip =cv2.flip(img_gray, 0)
 	global detedge
@@ -141,6 +150,17 @@ def getPoint(image):
 	for i in range(len(point_tree_x)):
 		point_tree_x[i]=point_tree_x[i]+xplus[int(point_tree_x[i])]
 		xplus[int(point_tree_x[i])]=xplus[int(point_tree_x[i])]+0.001
-	return point_tree_x,point_tree_y
+	ret_x=[]
+	ret_y=[]
+	if maxPointNum==0:
+		ret_x,ret_y=point_tree_x,point_tree_y
+	else:
+		mod = math.ceil(len(point_tree_x)/maxPointNum)
+		for i in range(len(point_tree_x)):
+			if i%mod==0:
+				ret_x.append(point_tree_x[i])
+				ret_y.append(point_tree_y[i])
+			
+	return ret_x,ret_y
 
 

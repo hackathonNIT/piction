@@ -5,7 +5,7 @@ input = "test/img/test3.png"
 
 img = cv2.imread(input)
 
-x_data,y_data=getPoint(img)
+x_data,y_data=getPoint(img,50)
 
 print(x_data)
 print(y_data)
