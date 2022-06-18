@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
 	name="piction",
-	version="0.1",
+	version="0.1.1",
 	description="絵を関数化するライブラリ",
 	auther="hackathonNIT",
 	url="https://github.com/hackathonNIT/piction",
