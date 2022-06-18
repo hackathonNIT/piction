@@ -7,4 +7,5 @@ setup(
 	auther="hackathonNIT",
 	url="https://github.com/hackathonNIT/piction",
 	packages=["piction"],
+	install_requires=open('requirements.txt').read().splitlines(),
 )
