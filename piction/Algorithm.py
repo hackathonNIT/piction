@@ -1,6 +1,7 @@
 import cv2
 import numpy as np
 import sys
+import math
 
 sys.setrecursionlimit(100000)
 
@@ -154,7 +155,7 @@ def getPoint(image,maxPointNum=0):
 	if maxPointNum==0:
 		ret_x,ret_y=point_tree_x,point_tree_y
 	else:
-		mod = len(point_tree_x)/maxPointNum
+		mod = math.ceil(len(point_tree_x)/maxPointNum)
 		for i in range(len(point_tree_x)):
 			if i%mod==0:
 				ret_x.append(point_tree_x[i])
