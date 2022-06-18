@@ -8,6 +8,9 @@ point_tree_y=[]
 point_tree_x=[]
 detedge=[]
 
+def getDetedge():
+	return detedge
+
 class UnionFind():
     def __init__(self, n):
         self.n = n
@@ -133,6 +136,10 @@ def getPoint(image):
 				ut.union(d[y*len(detedge[0])+x],d[(y)*len(detedge[0])+(x+1)])
 	for i in ut.roots():
 		dfs(d2[i]%len(detedge[0]),int(d2[i]/len(detedge[0])))
+	xplus= {i:0 for i in range(len(detedge[0]))}
+	for i in range(len(point_tree_x)):
+		point_tree_x[i]=point_tree_x[i]+xplus[int(point_tree_x[i])]
+		xplus[int(point_tree_x[i])]=xplus[int(point_tree_x[i])]+0.001
 	return point_tree_x,point_tree_y
 
 
