@@ -177,6 +177,10 @@ def getPointArray(image,maxPointNum=0):
 	for i in ut.roots():
 		initialize()
 		dfs(d2[i]%len(detedge[0]),int(d2[i]/len(detedge[0])))
+		xplus= {i:0 for i in range(len(detedge[0]))}
+		for i in range(len(point_tree_x)):
+			point_tree_x[i]=point_tree_x[i]+xplus[int(point_tree_x[i])]
+			xplus[int(point_tree_x[i])]=xplus[int(point_tree_x[i])]+0.001
 		temp_x=[]
 		temp_y=[]
 		if maxPointNum==0 or len(point_tree_x)<=maxPointNum :
