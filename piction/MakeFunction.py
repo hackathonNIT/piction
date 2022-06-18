@@ -42,7 +42,8 @@ def getSinRegression(X,Y1):
     print(x)
     global popt
     popt, pcov=curve_fit(func1,x, y1, p0=[1]*len(x))
-    return x,popt
+    Y1=func1(X, *popt)
+    return x,Y1
     #popt, pcov=curve_fit(func2,x, y1, p0=[0]*len(x))
 
 def plotRegression():
