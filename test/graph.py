@@ -1,7 +1,7 @@
 from piction import WriteFunc1,getSinRegression,plotRegression,getPoint,getDetedge
 import cv2
 
-input = "test/img/test2.png"
+input = "test/img/test3.png"
 
 img = cv2.imread(input)
 
