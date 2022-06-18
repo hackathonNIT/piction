@@ -6,7 +6,8 @@ from .MakeFunction import(
 
 from .Algorithm import(
 	getPoint,
+	getPointArray,
 	getDetedge
 )
 
-__all__ = ["WriteFunc1","getSinRegression","plotRegression","getPoint","getDetedge"]
+__all__ = ["WriteFunc1","getSinRegression","plotRegression","getPoint","getPointArray","getDetedge"]
