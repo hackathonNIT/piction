@@ -5,7 +5,7 @@ import random
 
 if 'firebase_initialize' not in st.session_state:
 	st.session_state["firebase_initialize"] = 1
-	cred = credentials.Certificate(r"ex_app/pictionsample-firebase-adminsdk-31wwv-45922fca88.json")
+	cred = credentials.Certificate(r"pictionsample-firebase-adminsdk-31wwv-45922fca88.json")
 	initialize_app(cred,{'storageBucket': 'gs://pictionsample.appspot.com'})
 
 
@@ -18,7 +18,7 @@ def getArray1(x,y):
 		x_ret.append(-1)
 		y_ret.append(-1)
 	return np.array(x_ret),np.array(y_ret)
-	
+
 
 def getArray2(x,y):
 	x_sub=[]
@@ -38,7 +38,7 @@ def getArray2(x,y):
 
 
 
-	
+
 
 
 def readImage():
@@ -59,7 +59,7 @@ def getFunc(num=0):
 		f1=random.choice(funcs)
 		fx,fy=getArray2(np.fromstring(f1["x"], dtype = "float64"), np.fromstring(f1["y"], dtype = "float64"))
 		print(fx)
-		
+
 		ret.append({"x":fx,"y":fy,"func":f1["func"]})
 	return ret
 
@@ -77,4 +77,3 @@ def writeImage(x,y,func_str):
 		'func':func_str
 	})
 	return
-
