@@ -1,10 +1,13 @@
 import streamlit as st
 from streamlit_drawable_canvas import st_canvas
 import cv2
+from piction import getPointArray ,getSinRegressionArray,WriteFunc1
+import matplotlib.pyplot as plt
 
-from piction import getPoint
+from firebase import getFunc,writeImage
 
-
+if 'flag' not in st.session_state:
+  st.session_state["flag"] = 0
 
 st.title("Drawable Canvas")
 st.markdown("""
@@ -30,9 +33,46 @@ height= 150,
 key="canvas",
 )
 
+
+if st.button("関数", key=0):
+  st.session_state["flag"] = 1
+
 # Do something interesting with the image data
-if canvas_result.image_data is not None:
+if canvas_result.image_data is not None and st.session_state["flag"]==1:
 	st.image(canvas_result.image_data)
-	x,y=getPoint(canvas_result.image_data)
-	print(len(x))
+	x_data,y_data=getPointArray(canvas_result.image_data)
+	print(x_data)
+	x,y=getSinRegressionArray(x_data,y_data)
+	fig= plt.figure("your func")
+	for i in range(len(x)):
+		plt.plot(x[i],y[i],label="RegressionFunction"+str(i))
+	plt.xlabel("num")
+	plt.ylabel("f")
+	plt.legend()
+	#plt.savefig("/content/drive/MyDrive/hackason/results/"+fileName+".png")
+	# グリッド表示
+	plt.grid()
+	st.pyplot(fig)
+	writeImage(x,y,WriteFunc1())
+	st.session_state["flag"]=0
+
+if canvas_result.image_data is not None :
+	st.markdown("""
+	みんなの作った作品！
+	""")
+	print("start")
+	funcs=getFunc(1)
+	fig= plt.figure("sumple function")
+	for func1 in funcs:
+		for i in range(len(func1["x"])):
+			plt.plot(func1["x"][i],func1["y"][i],label="RegressionFunction"+str(i))
+	
+	plt.xlabel("num")
+	plt.ylabel("f")
+	plt.legend()
+	#plt.savefig("/content/drive/MyDrive/hackason/results/"+fileName+".png")
+	# グリッド表示
+	plt.grid()
+	st.pyplot(fig)
+
 	
