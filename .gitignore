@@ -1,3 +1,4 @@
 dist
 piction.egg-info
 ex_app/pictionsample-firebase-adminsdk-31wwv-45922fca88.json
+ex_app/__pycache__
